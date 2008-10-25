@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="tvgids" class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
+		<property name="tvgidsurl" value="http://localhost:8080" />
+		<property name="noData" value="Over dit programma zijn geen detailgegevens bekend." />
+		<property name="ganreMapping">
+			<map>
+			   <entry key="amusement" value="Talk"/>
+               <entry key="animatie" value="Animated"/>
+               <entry key="comedy" value="Comedy"/>
+               <entry key="documentaire" value="Documentary"/>
+               <entry key="educatief" value="Educational"/>
+               <entry key="erotiek" value="Adult"/>
+               <entry key="film" value="Movies"/>
+               <entry key="muziek" value="Art/Music"/>
+               <entry key="informatief" value="Educational"/>
+               <entry key="jeugd" value="Children"/>
+               <entry key="kunst/cultuur" value="Arts/Culture"/>
+               <entry key="misdaad" value="Crime/Mystery"/>
+               <entry key="muziek" value="Music"/>
+               <entry key="natuur" value="Science/Nature"/>
+               <entry key="nieuws/actualiteiten" value="News"/>
+               <entry key="overige" value="Unknown"/>
+               <entry key="religieus" value="Religion"/>
+               <entry key="serie/soap" value="Drama"/>
+               <entry key="sport" value="Sports"/>
+               <entry key="theater" value="Arts/Culture"/>
+               <entry key="wetenschap" value="Science/Nature"/>
+			</map>
+		</property>
+		<property name="roleMapping">
+			<map>
+			   <entry key="regie" value="director"/>
+               <entry key="acteurs" value="actor"/>
+               <entry key="presentatie" value="presenter"/>
+               <entry key="scenario" value="writer"/>
+			</map>
+		</property>
+		<property name="transport" ref="httpTransport"/>
+	</bean>
+
+	<bean id="xmltvGrabber" class="org.anuta.xmltv.XMLTVGrabber">
+		<property name="daysToGrab" value="1"/>
+		<property name="channels">
+			<list>
+				<bean class="org.anuta.xmltv.beans.Channel">
+					<property name="channelId" value="1" />
+					<property name="channelName" value="Nederland 1" />
+					<property name="grabber" ref="tvgids" />
+				</bean>
+			</list>
+		</property>
+		<property name="export" ref="consoleExport"/>
+	</bean>
+
+    <bean id="httpTransport" class="org.anuta.xmltv.transport.HTTPTransport">
+    	<property name="encoding" value="ISO8859_1"/>
+    </bean>
+    
+    <bean id="consoleExport" class="org.anuta.xmltv.export.ConsoleExport"/>
+
+
+</beans>
