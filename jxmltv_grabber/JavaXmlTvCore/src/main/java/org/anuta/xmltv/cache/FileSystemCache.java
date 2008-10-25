@@ -40,8 +40,7 @@ public class FileSystemCache implements CacheManager {
 
     public Programme getFromCache(Date date, String id) throws CacheException {
 	File f = new File(folder);
-	if (!f.exists() || (!f.isDirectory()))
-	    return null;
+	if (!f.exists()) f.mkdir();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 	String dirName = sdf.format(date);
 	File dir = new File(f, dirName);
