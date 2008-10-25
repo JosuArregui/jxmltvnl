@@ -1,5 +1,21 @@
 package org.anuta.xmltv;
-
+/*
+ * Java xmltv grabber for tvgids.nl
+ * Copyright (C) 2008 Alex Fedorov
+ * fedor@anuta.org
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * See COPYING.TXT for details.
+ */
 import java.rmi.server.ExportException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,35 +51,35 @@ public class XMLTVGrabber {
     private CacheManager cache;
 
     private Export export;
-    
+
     private long maxOverlap = 10; // 10 minutes
-    
+
     private int overlapFixMode = 0; // 0 - middle, 1 - left, 2 - right
-    
+
     private int daysToGrab = 4;
 
     public int getDaysToGrab() {
-        return daysToGrab;
+	return daysToGrab;
     }
 
     public void setDaysToGrab(int daysToGrab) {
-        this.daysToGrab = daysToGrab;
+	this.daysToGrab = daysToGrab;
     }
 
     public int getOverlapFixMode() {
-        return overlapFixMode;
+	return overlapFixMode;
     }
 
     public void setOverlapFixMode(int overlapFixMode) {
-        this.overlapFixMode = overlapFixMode;
+	this.overlapFixMode = overlapFixMode;
     }
 
     public long getMaxOverlap() {
-        return maxOverlap;
+	return maxOverlap;
     }
 
     public void setMaxOverlap(long maxOverlap) {
-        this.maxOverlap = maxOverlap;
+	this.maxOverlap = maxOverlap;
     }
 
     public Export getExport() {
@@ -89,8 +105,6 @@ public class XMLTVGrabber {
     public void setChannels(List channels) {
 	this.channels = channels;
     }
-    
-    
 
     public List getDelimitedValues(String value, String delimiter, boolean processAnd) {
 	if (value == null)
@@ -100,7 +114,8 @@ public class XMLTVGrabber {
 	    return null;
 	if (processAnd) {
 	    values = values.replaceAll(" en ", delimiter);
-	    if (values.endsWith("e.a")) values = values.substring(0, values.length()-3);
+	    if (values.endsWith("e.a"))
+		values = values.substring(0, values.length() - 3);
 	}
 	StringTokenizer st = new StringTokenizer(values, delimiter);
 	List ret = new ArrayList();
@@ -138,12 +153,12 @@ public class XMLTVGrabber {
 		if (log.isInfoEnabled())
 		    log.info("Processing channel " + channel);
 		List programs = channel.getGrabber().getPrograms(channel, new Date(), day);
-		
-		if (log.isDebugEnabled()) log.debug("Sorting programs");
+
+		if (log.isDebugEnabled())
+		    log.debug("Sorting programs");
 		Collections.sort(programs, new ProgramComparator());
-		
+
 		adjustTiming(programs);
-		
 
 		if (day == 0) {
 		    if (log.isDebugEnabled())
@@ -191,7 +206,7 @@ public class XMLTVGrabber {
 			// dates
 			prog.setStart(sdfDateTime.format(p2.getStartDate()));
 			prog.setStop(sdfDateTime.format(p2.getEndDate()));
-			
+
 			// title
 			Lstring title = prog.addNewTitle();
 			title.setLang(channel.getLanguage());
@@ -241,8 +256,8 @@ public class XMLTVGrabber {
 			}
 
 			// end of credits
-			
-			//prog.getAudio().setPresent("yes");
+
+			// prog.getAudio().setPresent("yes");
 			// specials
 			if (p2.getSpecials() != null) {
 			    List list = getDelimitedValues(p2.getSpecials(), ",", false);
@@ -250,7 +265,8 @@ public class XMLTVGrabber {
 				Iterator dirit = list.iterator();
 				while (dirit.hasNext()) {
 				    String tmp = (String) dirit.next();
-				    if (log.isDebugEnabled()) log.debug("Process special: "+tmp);
+				    if (log.isDebugEnabled())
+					log.debug("Process special: " + tmp);
 				    if ("breedbeeld uitzending".equalsIgnoreCase(tmp)) {
 					if (prog.getVideo() == null)
 					    prog.addNewVideo();
@@ -275,13 +291,12 @@ public class XMLTVGrabber {
 			    }
 			} // end specials
 
-			
 			// rating
-			if (p.getRating().size()>0) {
+			if (p.getRating().size() > 0) {
 			    Iterator dirit = p.getRating().iterator();
 			    while (dirit.hasNext()) {
-				Rating rat = (Rating)dirit.next();
-				
+				Rating rat = (Rating) dirit.next();
+
 				org.anuta.xmltv.xmlbeans.Rating rating = prog.addNewRating();
 				rating.setSystem(rat.getSystem());
 				rating.setValue(StringHelper.unescapeHTML(rat.getValue()));
@@ -289,18 +304,18 @@ public class XMLTVGrabber {
 				icon.setSrc(rat.getIcon());
 			    }
 			} // end rating
-			
-			if (p.getSubTitle()!=null) {
+
+			if (p.getSubTitle() != null) {
 			    Lstring subtitle = prog.addNewSubTitle();
 			    subtitle.setLang(channel.getLanguage());
 			    subtitle.setStringValue(StringHelper.unescapeHTML(p.getSubTitle()));
 			}
-			
+
 			// clumpIdx
-			if (p.getClumpIdx()!=null) {
+			if (p.getClumpIdx() != null) {
 			    prog.setClumpidx(p.getClumpIdx());
 			}
-			
+
 			try {
 			    if (getCache() != null)
 				getCache().saveInCache(p2.getStartDate(), p2.getId(), prog);
@@ -325,44 +340,49 @@ public class XMLTVGrabber {
 		log.error("Unable to export document", e);
 	}
     }
-    
-    
+
     private void adjustTiming(List programs) {
-	if ((programs==null)||(programs.size()<2)) return;
-	
-	for (int i=0;i<(programs.size()-1);i++) {
-	    Program p1 = (Program)programs.get(i);
-	    Program p2 = (Program)programs.get(i+1);
-	    
+	if ((programs == null) || (programs.size() < 2))
+	    return;
+
+	for (int i = 0; i < (programs.size() - 1); i++) {
+	    Program p1 = (Program) programs.get(i);
+	    Program p2 = (Program) programs.get(i + 1);
+
 	    if (p1.getEndDate().after(p2.getStartDate())) {
-		if (log.isDebugEnabled()) log.debug("Overlap detected "+p1+" "+p2);
-		long overlap = p1.getEndDate().getTime()-p2.getStartDate().getTime();
-		long overlapMinutes = Math.round(overlap/60000);
-		
-		if (log.isDebugEnabled()) log.debug("Overlapped on "+overlapMinutes+" minutes");
-		
-		if (overlapMinutes<=getMaxOverlap()) {
-		    if (log.isDebugEnabled()) log.debug("Fix overlap with mode "+getOverlapFixMode());
-		    
-		    if (0==getOverlapFixMode()) {
+		if (log.isDebugEnabled())
+		    log.debug("Overlap detected " + p1 + " " + p2);
+		long overlap = p1.getEndDate().getTime() - p2.getStartDate().getTime();
+		long overlapMinutes = Math.round(overlap / 60000);
+
+		if (log.isDebugEnabled())
+		    log.debug("Overlapped on " + overlapMinutes + " minutes");
+
+		if (overlapMinutes <= getMaxOverlap()) {
+		    if (log.isDebugEnabled())
+			log.debug("Fix overlap with mode " + getOverlapFixMode());
+
+		    if (0 == getOverlapFixMode()) {
 			// middle
-			overlap = overlap>>1; 
-			p1.getEndDate().setTime(p1.getEndDate().getTime()-overlap);
+			overlap = overlap >> 1;
+			p1.getEndDate().setTime(p1.getEndDate().getTime() - overlap);
 			p2.setStartDate(p1.getEndDate());
-		    } else if (2==getOverlapFixMode()) {
+		    } else if (2 == getOverlapFixMode()) {
 			// p2 leading
 			p1.setEndDate(p2.getStartDate());
-		    } else if (1==getOverlapFixMode()) {
+		    } else if (1 == getOverlapFixMode()) {
 			// p1 leading
 			p2.setStartDate(p1.getEndDate());
-		    } else throw new IllegalArgumentException("Overlap mode can be 0,1 or 2");
+		    } else
+			throw new IllegalArgumentException("Overlap mode can be 0,1 or 2");
 		} else {
-		    if (log.isDebugEnabled()) log.debug("Overlap is too long, lets mark it as special");
+		    if (log.isDebugEnabled())
+			log.debug("Overlap is too long, lets mark it as special");
 		    p1.setClumpIdx("0/2");
 		    p2.setClumpIdx("1/2");
-		    
+
 		}
-		
+
 	    }
 	}
     }
