@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=htmlcleaner2_1.jar -DartifactId=htmlcleaner -Dversion=2.1 -DgroupId=org.anuta.htmlcleaner -Dpackaging=jar -DgeneratePom=true
