@@ -174,8 +174,7 @@ public class XMLTVGrabber {
 
 		Iterator it2 = programs.iterator();
 		while (it2.hasNext()) {
-		    // i++;
-		    // if (i>4) break;
+	
 		    Program p = (Program) it2.next();
 		    Programme prog = null;
 
@@ -391,8 +390,3 @@ public class XMLTVGrabber {
 	}
     }
 }
-
-/**
- * Extras Zwartwit Herhaling Breedbeeld Dolby Surround Teletekst ondertiteld
- * Live
- */
