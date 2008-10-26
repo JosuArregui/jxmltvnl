@@ -7,9 +7,21 @@
       <param name="ConversionPattern" value="[XMLTV]%d [%t] %-5p %c - %m%n" />
     </layout>
   </appender>
+  <appender name="FileAppender" class="org.apache.log4j.RollingFileAppender">
+     <param name="File" value="/var/log/mythtv/grabber.log"/>
+     <param name="Threshold" value="INFO"/>
+     <param name="MaxFileSize" value="10MB"/>
+     <param name="MaxBackupIndex" value="3"/>
+     <layout class="org.apache.log4j.PatternLayout">
+       <param name="ConversionPattern" value="[XMLTV]%d [%t] %-5p %c - %m%n" />
+     </layout>
+  </appender>  
   <category name="org.anuta">
     <priority value="info"/>
-  </category><root><priority value="error"/>
-    <appender-ref ref="ConsoleAppender"/>
+    <appender-ref ref="FileAppender"/>    
+  </category>
+  <root>
+    <priority value="error"/>
+    <appender-ref ref="FileAppender"/>
   </root>
 </log4j:configuration>
