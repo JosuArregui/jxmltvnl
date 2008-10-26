@@ -3,7 +3,7 @@
 <beans>
 
 	<bean id="tvgids" class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
-		<property name="tvgidsurl" value="http://localhost:8080" />
+		<property name="tvgidsurl" value="http://www.tvgids.nl" />
 		<property name="noData" value="Over dit programma zijn geen detailgegevens bekend." />
 		<property name="ganreMapping">
 			<map>
@@ -39,6 +39,7 @@
 			</map>
 		</property>
 		<property name="transport" ref="httpTransport"/>
+		<property name="xmltvSuffix" value=".tvgids.nl"/>
 	</bean>
 
 	<bean id="xmltvGrabber" class="org.anuta.xmltv.XMLTVGrabber">
@@ -49,6 +50,7 @@
 					<property name="channelId" value="1" />
 					<property name="channelName" value="Nederland 1" />
 					<property name="grabber" ref="tvgids" />
+					<property name="channelLogo" value="http://logos1.jpg"/>
 				</bean>
 			</list>
 		</property>

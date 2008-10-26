@@ -166,6 +166,10 @@ public class XMLTVGrabber {
 		    org.anuta.xmltv.xmlbeans.Channel channelXml = tv.addNewChannel();
 		    channelXml.setId(channel.getXmltvChannelId());
 		    channelXml.setDisplayName(StringHelper.unescapeHTML(channel.getChannelName()));
+		    if (channel.getChannelLogo()!=null) {
+		      Image icon = channelXml.addNewIcon();
+		      icon.setSrc(channel.getChannelLogo());
+		    }
 		}
 
 		Iterator it2 = programs.iterator();

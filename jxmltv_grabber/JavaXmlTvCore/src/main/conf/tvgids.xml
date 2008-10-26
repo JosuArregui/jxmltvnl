@@ -55,6 +55,8 @@
 					<property name="channelId" value="1" />
 					<property name="channelName" value="Nederland 1" />
 					<property name="grabber" ref="tvgids" />
+					<!-- you can define logos -->
+					<!--  property name="channelLogo" value="http://www.tvgids.nl/logos/ned1.jpg"/ -->
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="46" />
