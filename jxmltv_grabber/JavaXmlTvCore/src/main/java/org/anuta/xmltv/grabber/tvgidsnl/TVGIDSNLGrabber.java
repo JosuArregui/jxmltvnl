@@ -57,6 +57,23 @@ public class TVGIDSNLGrabber implements EPGGrabber {
     private String longDateFormat = "EEEEEEEEEEEE dd MMMM yyyy HH:mm";
     
     private Map roleMapping = new HashMap();
+    
+    private String xmltvSuffix = ""; // additional to the channel id (.tvgids.nl)
+
+    public String getMappedChannelId(String channelId) {
+	StringBuffer sb = new StringBuffer();
+	sb.append(channelId);
+	sb.append(getXmltvSuffix());
+	return sb.toString();
+    }
+
+    public String getXmltvSuffix() {
+        return xmltvSuffix;
+    }
+
+    public void setXmltvSuffix(String xmltvSuffix) {
+        this.xmltvSuffix = xmltvSuffix;
+    }
 
     public String getLongDateFormat() {
         return longDateFormat;

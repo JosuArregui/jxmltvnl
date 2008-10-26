@@ -61,4 +61,8 @@ public class Channel {
 	StringBuffer sb = new StringBuffer().append(getChannelId()).append(" - ").append(getChannelName());
 	return sb.toString();
     }
+    
+    public String getXmltvChannelId() {
+	return getGrabber().getMappedChannelId(getChannelId());
+    }
 }

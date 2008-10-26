@@ -164,7 +164,7 @@ public class XMLTVGrabber {
 		    if (log.isDebugEnabled())
 			log.debug("Add channel " + channel + " to xml");
 		    org.anuta.xmltv.xmlbeans.Channel channelXml = tv.addNewChannel();
-		    channelXml.setId(channel.getChannelId());
+		    channelXml.setId(channel.getXmltvChannelId());
 		    channelXml.setDisplayName(StringHelper.unescapeHTML(channel.getChannelName()));
 		}
 
@@ -198,7 +198,7 @@ public class XMLTVGrabber {
 			    desc.setStringValue(StringHelper.unescapeHTML(p2.getDescription()));
 			}
 
-			prog.setChannel(channel.getChannelId());
+			prog.setChannel(channel.getXmltvChannelId());
 			if (p2.getPremiere() != null) {
 			    prog.setDate(p2.getPremiere());
 			}
