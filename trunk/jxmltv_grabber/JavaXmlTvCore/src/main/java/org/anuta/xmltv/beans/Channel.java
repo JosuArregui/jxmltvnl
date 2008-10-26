@@ -23,7 +23,15 @@ public class Channel {
     private EPGGrabber grabber;
     private String language = "nl";
     private String channelName = "";
-  //  private String xmltvChannel
+    private String channelLogo;
+  
+    public String getChannelLogo() {
+        return channelLogo;
+    }
+
+    public void setChannelLogo(String channelLogo) {
+        this.channelLogo = channelLogo;
+    }
 
     public String getChannelName() {
 	return channelName;
