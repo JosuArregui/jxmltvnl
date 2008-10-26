@@ -482,7 +482,7 @@
 	</bean>
 
     <bean id="httpTransport" class="org.anuta.xmltv.transport.HTTPTransport">
-    	<!--property name="proxyAddress" value="proxy.intranet.allshare.nl"/-->
+    	<!--property name="proxyAddress" value="proxy_address"/-->
     	<property name="proxyPort" value="3128"/>
     	<property name="encoding" value="ISO8859_1"/> <!--  to be sure -->
     </bean>
