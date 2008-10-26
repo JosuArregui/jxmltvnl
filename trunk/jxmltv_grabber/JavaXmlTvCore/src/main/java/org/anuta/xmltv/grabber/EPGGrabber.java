@@ -30,4 +30,6 @@ public interface EPGGrabber {
     public String getMappedGanre(String ganre);
 
     public String getMappedRole(String role);
+    
+    public String getMappedChannelId(String channelId);
 }
