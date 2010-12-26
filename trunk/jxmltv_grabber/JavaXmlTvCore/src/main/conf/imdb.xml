@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:configuration.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="imdbDatasource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://${imdb.db.address}/${imdb.db.name}?createDatabaseIfNotExist=false&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="username" value="${imdb.db.login}" />
+		<property name="password" value="${imdb.db.password}" />
+	</bean>
+
+
+	<bean id="imdbSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		depends-on="imdbDatasource">
+		<property name="dataSource" ref="imdbDatasource" />
+		<property name="mappingResources">
+			<list>
+				<value>org/anuta/imdb/beans/MovieRating.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="imdbHibernateInterceptor"
+		class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="imdbSessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="imdbHibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="imdbSessionFactory" />
+		</property>
+	</bean>
+
+
+	<bean id="imdbDAO" class="org.anuta.imdb.IMDBDaoHibernate">
+		<property name="hibernateTemplate">
+			<ref bean="imdbHibernateTemplate" />
+		</property>
+	</bean>
+
+
+	<bean id="imdbManager"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="imdbManagerTarget" />
+		<property name="proxyInterfaces"
+			value="org.anuta.imdb.IMDBManager" />
+		<property name="interceptorNames">
+			<list>
+				<value>imdbHibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="imdbManagerTarget"
+		class="org.anuta.imdb.IMDBManagerImpl">
+		<property name="dao" ref="imdbDAO" />
+
+	</bean>
+
+	<bean id="imdbAccess" class="org.anuta.imdb.IMDBAccess"
+		init-method="startup">
+		<property name="downloader" ref="imdbDownloader" />
+		<property name="manager" ref="imdbManager" />
+		<property name="parser" ref="imdbParser" />
+	</bean>
+
+	<bean id="imdbParser" class="org.anuta.imdb.IMDBRatingParser">
+		<property name="prefixes">
+		    <!--  list of prefixes to process. Movies are called Movie, The will -->
+		    <!--  be converted to The Movie -->
+			<list>
+				<value>The</value>
+				<value>L'</value>
+				<value>El</value>
+				<value>La</value>
+				<value>Az</value>
+				<value>De</value>
+				<value>En</value>
+				<value>Il</value>
+				<value>Los</value>
+				<value>Die</value>
+				<value>Les</value>
+				<value>Das</value>
+				<value>A</value>
+				<value>I</value>
+				<value>Le</value>
+				<value>An</value>
+			</list>
+		</property>
+		<property name="encoding" value="${imdb.file.encoding}" />
+		<property name="downloader" ref="imdbDownloader" />
+	</bean>
+</beans>

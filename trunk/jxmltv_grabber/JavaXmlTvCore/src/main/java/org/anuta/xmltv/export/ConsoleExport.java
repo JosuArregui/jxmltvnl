@@ -18,8 +18,8 @@ package org.anuta.xmltv.export;
  */
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.rmi.server.ExportException;
 
+import org.anuta.xmltv.exceptions.ExportException;
 import org.apache.xmlbeans.XmlObject;
 
 public class ConsoleExport implements Export {

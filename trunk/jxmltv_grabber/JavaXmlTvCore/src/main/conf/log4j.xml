@@ -8,7 +8,7 @@
     </layout>
   </appender>
   <appender name="FileAppender" class="org.apache.log4j.RollingFileAppender">
-     <param name="File" value="/var/log/mythtv/grabber.log"/>
+     <param name="File" value="log/grabber.log"/>
      <param name="Threshold" value="INFO"/>
      <param name="MaxFileSize" value="10MB"/>
      <param name="MaxBackupIndex" value="3"/>
@@ -17,11 +17,23 @@
      </layout>
   </appender>  
   <category name="org.anuta">
-    <priority value="info"/>
+    <priority value="DEBUG"/>
     <appender-ref ref="FileAppender"/>    
   </category>
-  <root>
-    <priority value="error"/>
-    <appender-ref ref="FileAppender"/>
-  </root>
+  <category name="org.apache.commons">
+    <priority value="ERROR"/>
+    <appender-ref ref="FileAppender"/>    
+  </category> 
+  <category name="org.hibernate">
+    <priority value="ERROR"/>
+    <appender-ref ref="FileAppender"/>    
+  </category> 
+  <category name="org.springframework">
+    <priority value="ERROR"/>
+    <appender-ref ref="FileAppender"/>    
+  </category>
+  <category name="httpclient">
+    <priority value="ERROR"/>
+    <appender-ref ref="FileAppender"/>    
+  </category>  
 </log4j:configuration>

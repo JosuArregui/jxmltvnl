@@ -19,11 +19,27 @@ package org.anuta.xmltv;
  */
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Starter {
+/**
+ * Starter class.
+ * @author fedor
+ */
+public final class Starter {
 
-    public static void main(String[] args) {
-	ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("tvgids.xml");
-	XMLTVGrabber cm = (XMLTVGrabber) ctx.getBean("xmltvGrabber");
-	cm.grab();
+    /**
+     * empty constructor.
+     */
+    private Starter() {
+
+    }
+
+    /**
+     * Main method.
+     * @param args cl arguments
+     */
+    public static void main(final String[] args) {
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+                "tvgids.xml");
+        XMLTVGrabber cm = (XMLTVGrabber) ctx.getBean("xmltvGrabber");
+        cm.grab();
     }
 }

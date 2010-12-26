@@ -14,7 +14,7 @@
     <priority value="error"/>
   </category>
   <root>
-    <priority value="debug"/>
+    <priority value="error"/>
     <appender-ref ref="ConsoleAppender"/>
   </root>
 </log4j:configuration>

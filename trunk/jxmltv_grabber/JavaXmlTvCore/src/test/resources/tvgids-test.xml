@@ -2,66 +2,146 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<bean id="tvgids" class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
-		<property name="tvgidsurl" value="http://www.tvgids.nl" />
-		<property name="noData" value="Over dit programma zijn geen detailgegevens bekend." />
-		<property name="ganreMapping">
-			<map>
-			   <entry key="amusement" value="Talk"/>
-               <entry key="animatie" value="Animated"/>
-               <entry key="comedy" value="Comedy"/>
-               <entry key="documentaire" value="Documentary"/>
-               <entry key="educatief" value="Educational"/>
-               <entry key="erotiek" value="Adult"/>
-               <entry key="film" value="Movies"/>
-               <entry key="muziek" value="Art/Music"/>
-               <entry key="informatief" value="Educational"/>
-               <entry key="jeugd" value="Children"/>
-               <entry key="kunst/cultuur" value="Arts/Culture"/>
-               <entry key="misdaad" value="Crime/Mystery"/>
-               <entry key="muziek" value="Music"/>
-               <entry key="natuur" value="Science/Nature"/>
-               <entry key="nieuws/actualiteiten" value="News"/>
-               <entry key="overige" value="Unknown"/>
-               <entry key="religieus" value="Religion"/>
-               <entry key="serie/soap" value="Drama"/>
-               <entry key="sport" value="Sports"/>
-               <entry key="theater" value="Arts/Culture"/>
-               <entry key="wetenschap" value="Science/Nature"/>
-			</map>
+	
+
+
+
+	<bean id="grabberFactory"
+		class="org.anuta.xmltv.XMLTVGrabberTaskFactory">
+	
+		<!-- List of categories (after lookup), which will be used for IMDB star-rating -->
+		<property name="starRatingGanres">
+			<set>
+				<value>comedy</value>
+				<value>animated</value>
+				<value>movies</value>
+				<value>crime/mystery</value>
+				<value>drama</value>
+			</set>
 		</property>
-		<property name="roleMapping">
-			<map>
-			   <entry key="regie" value="director"/>
-               <entry key="acteurs" value="actor"/>
-               <entry key="presentatie" value="presenter"/>
-               <entry key="scenario" value="writer"/>
-			</map>
-		</property>
-		<property name="transport" ref="httpTransport"/>
-		<property name="xmltvSuffix" value=".tvgids.nl"/>
+
+	
 	</bean>
 
+	<!-- TVGids grabber definition -->
+	<bean id="tvgids"
+		class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
+		<property name="tvgidsurl" value="http://localhost:8080" />
+		<property name="noData"
+			value="Over dit programma zijn geen detailgegevens bekend." />
+		<!-- Ganre mapping, from tvgids to mythtv. Key must be in lower case -->
+		<property name="ganreMapping">
+			<map>
+				<entry key="amusement" value="Talk" />
+				<entry key="animatie" value="Animated" />
+				<entry key="comedy" value="Comedy" />
+				<entry key="documentaire" value="Documentary" />
+				<entry key="educatief" value="Educational" />
+				<entry key="erotiek" value="Adult" />
+				<entry key="film" value="Movies" />
+				<entry key="muziek" value="Art/Music" />
+				<entry key="informatief" value="Educational" />
+				<entry key="jeugd" value="Children" />
+				<entry key="kunst/cultuur" value="Arts/Culture" />
+				<entry key="misdaad" value="Crime/Mystery" />
+				<entry key="muziek" value="Music" />
+				<entry key="natuur" value="Science/Nature" />
+				<entry key="nieuws/actualiteiten" value="News" />
+				<entry key="overige" value="Unknown" />
+				<entry key="religieus" value="Religion" />
+				<entry key="serie/soap" value="Drama" />
+				<entry key="sport" value="Sports" />
+				<entry key="theater" value="Arts/Culture" />
+				<entry key="wetenschap" value="Science/Nature" />
+				<entry key="" value="Unknown" />
+			</map>
+		</property>
+		<!-- Role mapping from tvgids to mythtv. Key must be in lowercase -->
+		<property name="roleMapping">
+			<map>
+				<entry key="regie" value="director" />
+				<entry key="acteurs" value="actor" />
+				<entry key="presentatie" value="presenter" />
+				<entry key="scenario" value="writer" />
+			</map>
+		</property>
+
+		<!-- Transport for fetching tvgids.nl -->
+		<property name="transport" ref="httpTransport" />
+
+		<!-- Rating mapper -->
+		<property name="ratingMapper" ref="kijkwijzerMapper" />
+
+		<!-- What channel id to show in xmltv file. Default - empty. -->
+		<!-- Channels from xmltv will be suffexed with this value in xmltv xml file -->
+		<!--  property name="xmltvSuffix" value=".tvgids.nl"/ -->
+	</bean>
+
+	<!-- xmltv grabber definition -->
 	<bean id="xmltvGrabber" class="org.anuta.xmltv.XMLTVGrabber">
-		<property name="daysToGrab" value="1"/>
+		<property name="factory" ref="grabberFactory" />
+
+		<property name="daysToGrab" value="1" />
+
+		<!-- Which export to use for saving the result xml file -->
+		<!-- Allowed fileSystemExport and consoleExport -->
+		<property name="export" ref="fileSystemExport" />
+
+
+		<!-- channels definition. each bean in this list presents channel on tvgids.nl -->
 		<property name="channels">
 			<list>
 				<bean class="org.anuta.xmltv.beans.Channel">
+					<!-- tvgids.nl channel id -->
 					<property name="channelId" value="1" />
-					<property name="channelName" value="Nederland 1" />
+					<!-- tvgids.nl channel name -->
+					<property name="channelName" value="SBS 1" />
+					<!-- which grabber to use -->
 					<property name="grabber" ref="tvgids" />
-					<property name="channelLogo" value="http://logos1.jpg"/>
+
+					<!-- optional fields -->
+
+					<!-- language of the channel -->
+					<!--property name="language" value="nl"/ -->
+
+					<!-- logo of the channel -->
+					<!-- property name="channelLogo" value="http://www.logos.com/SBS6.gif"/ -->
 				</bean>
+
+			
 			</list>
 		</property>
-		<property name="export" ref="consoleExport"/>
+
 	</bean>
 
-    <bean id="httpTransport" class="org.anuta.xmltv.transport.HTTPTransport">
-    	<property name="encoding" value="ISO8859_1"/>
-    </bean>
-    
-    <bean id="consoleExport" class="org.anuta.xmltv.export.ConsoleExport"/>
+	<!-- KijkWijzer mapping -->
+	<bean id="kijkwijzerMapper"
+		class="org.anuta.xmltv.beans.RatingMapper">
+		<!-- rating system id for xmltv -->
+		<property name="system" value="KW" />
+		<property name="mapping">
+			<map>
+				<!-- maps tbgids kijkwijzer text to mythtv text -->
+				<entry key="Afgeraden voor kinderen jonger dan 6 jaar"
+					value="6+" />
+				<entry key="Afgeraden voor kinderen jonger dan 12 jaar"
+					value="12+" />
+				<entry key="Niet voor personen tot 16 jaar" value="16+" />
+			</map>
+		</property>
+	</bean>
 
+	<!-- http transport definition -->
+	<bean id="httpTransport"
+		class="org.anuta.xmltv.transport.HTTPTransport">
+	</bean>
+
+	<bean id="consoleExport"
+		class="org.anuta.xmltv.export.ConsoleExport" />
+
+	<bean id="fileSystemExport"
+		class="org.anuta.xmltv.export.FileSystemExport">
+		<property name="fileName" value="target/test.xml" />
+	</bean>
 
 </beans>

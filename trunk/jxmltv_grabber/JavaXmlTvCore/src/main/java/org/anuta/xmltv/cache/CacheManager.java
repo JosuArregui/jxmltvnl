@@ -25,4 +25,6 @@ public interface CacheManager {
     public Programme getFromCache(Date date, String id) throws CacheException;
 
     public void saveInCache(Date date, String id, Programme program) throws CacheException;
+    
+    public Runnable createCleaner();
 }

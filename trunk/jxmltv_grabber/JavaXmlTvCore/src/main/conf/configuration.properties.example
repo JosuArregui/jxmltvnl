@@ -1,0 +1,30 @@
+# Environment configuration.
+
+# Cache location
+cache.location = /tmp/jxmltv_cache
+
+# How many days we want to grab (7 is maximum for tvgids.nl)
+days.to.grab=7
+
+# http proxy definition. Leave address empty if you dont have proxy
+http.proxy.address=
+http.proxy.port=3128
+
+# encoding of tvgids.nl
+http.encoding=ISO8859_1
+
+# export file location
+export.file=out.xml
+
+# IMDB
+imdb.url=ftp://ftp.fu-berlin.de/pub/misc/movies/database/ratings.list.gz
+imdb.login=anonymous
+imdb.password=grabber@mythtv.org
+imdb.file.encoding=ISO-8859-1
+
+# IMDB database details
+imdb.db.address=localhost
+imdb.db.name=imdb
+imdb.db.login=imdb
+imdb.db.password=imdbpassword
+

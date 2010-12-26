@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="org.anuta.imdb.beans.MovieRating" table="IMDB_MOVIE_RATING">
+
+		<id name="id" column="ID" type="long">
+			<generator class="assigned"/>
+		</id>
+		<property name="title" type="string" column="TITLE" length="255"/>		
+		<property name="subtitle" type="string" column="SUBTITLE" length="255" />				
+		<property name="year" type="int" column="YEAR" />						
+		<property name="rating" type="big_decimal" column="RATING" />						
+	</class>
+
+</hibernate-mapping>

@@ -2,77 +2,146 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<bean id="tvgids" class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
-		<property name="tvgidsurl" value="http://www.tvgids.nl" />
-		<property name="noData" value="Over dit programma zijn geen detailgegevens bekend." />
-		<property name="ganreMapping">
-			<map>
-			   <entry key="amusement" value="Talk"/>
-               <entry key="animatie" value="Animated"/>
-               <entry key="comedy" value="Comedy"/>
-               <entry key="documentaire" value="Documentary"/>
-               <entry key="educatief" value="Educational"/>
-               <entry key="erotiek" value="Adult"/>
-               <entry key="film" value="Movies"/>
-               <entry key="muziek" value="Art/Music"/>
-               <entry key="informatief" value="Educational"/>
-               <entry key="jeugd" value="Children"/>
-               <entry key="kunst/cultuur" value="Arts/Culture"/>
-               <entry key="misdaad" value="Crime/Mystery"/>
-               <entry key="muziek" value="Music"/>
-               <entry key="natuur" value="Science/Nature"/>
-               <entry key="nieuws/actualiteiten" value="News"/>
-               <entry key="overige" value="Unknown"/>
-               <entry key="religieus" value="Religion"/>
-               <entry key="serie/soap" value="Drama"/>
-               <entry key="sport" value="Sports"/>
-               <entry key="theater" value="Arts/Culture"/>
-               <entry key="wetenschap" value="Science/Nature"/>
-               <entry key="" value="Unknown"/>
-			</map>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:configuration.properties</value>
+			</list>
 		</property>
-		<property name="roleMapping">
-			<map>
-			   <entry key="regie" value="director"/>
-               <entry key="acteurs" value="actor"/>
-               <entry key="presentatie" value="presenter"/>
-               <entry key="scenario" value="writer"/>
-			</map>
-		</property>
-		<property name="transport" ref="httpTransport"/>
-		
-		<property name="ratingMapper" ref="kijkwijzerMapper"/>
-		<!-- What channel id to show in xmltv file. Default - empty. -->
-		<!--  property name="xmltvSuffix" value=".tvgids.nl"/ -->
-		
 	</bean>
 
+
+	<!-- comment following line if you DONT want to use IMDB star rating -->
+	<import resource="classpath:imdb.xml" />
+
+	<bean id="grabberFactory"
+		class="org.anuta.xmltv.XMLTVGrabberTaskFactory">
+		<!-- comment out following line if you DONT want to use IMDB star rating -->
+		<property name="imdbAccess" ref="imdbAccess" />
+
+		<!-- List of categories (after lookup), which will be used for IMDB star-rating -->
+		<property name="starRatingGanres">
+			<set>
+				<value>comedy</value>
+				<value>animated</value>
+				<value>movies</value>
+				<value>crime/mystery</value>
+				<value>drama</value>
+			</set>
+		</property>
+
+		<!-- File system cache. Comment out if you DONT want to use cache -->
+		<property name="cache">
+			<bean class="org.anuta.xmltv.cache.FileSystemCache">
+				<property name="folder" value="${cache.location}" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- TVGids grabber definition -->
+	<bean id="tvgids"
+		class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
+		<property name="tvgidsurl" value="http://www.tvgids.nl" />
+		<property name="xsltPath" value="xslt"/>
+		<property name="noData"
+			value="Over dit programma zijn geen detailgegevens bekend." />
+		<!-- Ganre mapping, from tvgids to mythtv. Key must be in lower case -->
+		<property name="ganreMapping">
+			<map>
+				<entry key="amusement" value="Talk" />
+				<entry key="animatie" value="Animated" />
+				<entry key="comedy" value="Comedy" />
+				<entry key="documentaire" value="Documentary" />
+				<entry key="educatief" value="Educational" />
+				<entry key="erotiek" value="Adult" />
+				<entry key="film" value="Movies" />
+				<entry key="muziek" value="Art/Music" />
+				<entry key="informatief" value="Educational" />
+				<entry key="jeugd" value="Children" />
+				<entry key="kunst/cultuur" value="Arts/Culture" />
+				<entry key="misdaad" value="Crime/Mystery" />
+				<entry key="muziek" value="Music" />
+				<entry key="natuur" value="Science/Nature" />
+				<entry key="nieuws/actualiteiten" value="News" />
+				<entry key="overige" value="Unknown" />
+				<entry key="religieus" value="Religion" />
+				<entry key="serie/soap" value="Drama" />
+				<entry key="sport" value="Sports" />
+				<entry key="theater" value="Arts/Culture" />
+				<entry key="wetenschap" value="Science/Nature" />
+				<entry key="" value="Unknown" />
+			</map>
+		</property>
+		<!-- Role mapping from tvgids to mythtv. Key must be in lowercase -->
+		<property name="roleMapping">
+			<map>
+				<entry key="regie" value="director" />
+				<entry key="acteurs" value="actor" />
+				<entry key="presentatie" value="presenter" />
+				<entry key="scenario" value="writer" />
+			</map>
+		</property>
+
+		<!-- Transport for fetching tvgids.nl -->
+		<property name="transport" ref="httpTransport" />
+
+		<!-- Rating mapper -->
+		<property name="ratingMapper" ref="kijkwijzerMapper" />
+
+		<!-- What channel id to show in xmltv file. Default - empty. -->
+		<!-- Channels from xmltv will be suffexed with this value in xmltv xml file -->
+		<!--  property name="xmltvSuffix" value=".tvgids.nl"/ -->
+	</bean>
+
+	<!-- xmltv grabber definition -->
 	<bean id="xmltvGrabber" class="org.anuta.xmltv.XMLTVGrabber">
-		<property name="daysToGrab" value="7"/>
+		<property name="factory" ref="grabberFactory" />
+
+		<property name="daysToGrab" value="${days.to.grab}" />
+
+		<!-- Which export to use for saving the result xml file -->
+		<!-- Allowed fileSystemExport and consoleExport -->
+		<property name="export" ref="fileSystemExport" />
+
+
+		<!-- channels definition. each bean in this list presents channel on tvgids.nl -->
 		<property name="channels">
 			<list>
+				<bean class="org.anuta.xmltv.beans.Channel">
+					<!-- tvgids.nl channel id -->
+					<property name="channelId" value="36" />
+					<!-- tvgids.nl channel name -->
+					<property name="channelName" value="SBS 6" />
+					<!-- which grabber to use -->
+					<property name="grabber" ref="tvgids" />
+
+					<!-- optional fields -->
+
+					<!-- language of the channel -->
+					<!--property name="language" value="nl"/ -->
+
+					<!-- logo of the channel -->
+					<!-- property name="channelLogo" value="http://www.logos.com/SBS6.gif"/ -->
+				</bean>
+
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="1" />
 					<property name="channelName" value="Nederland 1" />
 					<property name="grabber" ref="tvgids" />
-					<!-- you can define logos -->
-					<!--  property name="channelLogo" value="http://www.tvgids.nl/logos/ned1.jpg"/ -->
+
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="46" />
 					<property name="channelName" value="RTL 7" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
-				<bean class="org.anuta.xmltv.beans.Channel">
-					<property name="channelId" value="36" />
-					<property name="channelName" value="SBS 6" />
-					<property name="grabber" ref="tvgids" />
-				</bean>
+
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="37" />
 					<property name="channelName" value="NET 5" />
 					<property name="grabber" ref="tvgids" />
-				</bean>				
+				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="2" />
 					<property name="channelName" value="Nederland 2" />
@@ -130,12 +199,14 @@
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="29" />
-					<property name="channelName" value="Discovery Channel" />
+					<property name="channelName"
+						value="Discovery Channel" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="18" />
-					<property name="channelName" value="National Geographic" />
+					<property name="channelName"
+						value="National Geographic" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
@@ -182,25 +253,25 @@
 					<property name="channelId" value="7" />
 					<property name="channelName" value="BBC 1" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="en"/>
+					<property name="language" value="en" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="8" />
 					<property name="channelName" value="BBC 2" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="en"/>					
+					<property name="language" value="en" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="104" />
 					<property name="channelName" value="BBC Prime" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="en"/>					
+					<property name="language" value="en" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="86" />
 					<property name="channelName" value="BBC World" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="en"/>					
+					<property name="language" value="en" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="90" />
@@ -217,7 +288,7 @@
 					<property name="channelId" value="26" />
 					<property name="channelName" value="CNN" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="en"/>					
+					<property name="language" value="en" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="91" />
@@ -236,7 +307,8 @@
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="148" />
-					<property name="channelName" value="Eredivisie Live" />
+					<property name="channelName"
+						value="Eredivisie Live" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
@@ -334,11 +406,12 @@
 					<property name="channelId" value="27" />
 					<property name="channelName" value="Rai Uno" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="it"/>
+					<property name="language" value="it" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="100" />
-					<property name="channelName" value="REGIO TV UTRECHT" />
+					<property name="channelName"
+						value="REGIO TV UTRECHT" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
@@ -378,7 +451,8 @@
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="14" />
-					<property name="channelName" value="Sudwest Fernsehen" />
+					<property name="channelName"
+						value="Sudwest Fernsehen" />
 					<property name="grabber" ref="tvgids" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
@@ -456,44 +530,59 @@
 					<property name="channelId" value="12" />
 					<property name="channelName" value="WDR Fernsehen" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="de"/>
+					<property name="language" value="de" />
 				</bean>
 				<bean class="org.anuta.xmltv.beans.Channel">
 					<property name="channelId" value="10" />
 					<property name="channelName" value="ZDF" />
 					<property name="grabber" ref="tvgids" />
-					<property name="language" value="de"/>					
+					<property name="language" value="de" />
 				</bean>
 			</list>
 		</property>
-		<property name="cache">
-			<bean class="org.anuta.xmltv.cache.FileSystemCache">
-				<property name="folder" value="/Users/fedor/workspaces/xmltv/JavaXmlTvCore/cache"/>
-			</bean>
-		</property>
-		<property name="export" ref="fileSystemExport"/>
+
 	</bean>
-	
-	<bean id="kijkwijzerMapper" class="org.anuta.xmltv.beans.RatingMapper">
-		<property name="system" value="KW"/>
+
+	<!-- KijkWijzer mapping -->
+	<bean id="kijkwijzerMapper"
+		class="org.anuta.xmltv.beans.RatingMapper">
+		<!-- rating system id for xmltv -->
+		<property name="system" value="KW" />
 		<property name="mapping">
 			<map>
-			    <entry key="Afgeraden voor kinderen jonger dan 6 jaar" value="6+"/>
-				<entry key="Afgeraden voor kinderen jonger dan 12 jaar" value="12+"/>
-				<entry key="Niet voor personen tot 16 jaar" value="16+"/>
+				<!-- maps tbgids kijkwijzer text to mythtv text -->
+				<entry key="Afgeraden voor kinderen jonger dan 6 jaar"
+					value="6+" />
+				<entry key="Afgeraden voor kinderen jonger dan 12 jaar"
+					value="12+" />
+				<entry key="Niet voor personen tot 16 jaar" value="16+" />
 			</map>
 		</property>
 	</bean>
 
-    <bean id="httpTransport" class="org.anuta.xmltv.transport.HTTPTransport">
-    	<!--property name="proxyAddress" value="proxy_address"/-->
-    	<property name="proxyPort" value="3128"/>
-    	<property name="encoding" value="ISO8859_1"/> <!--  to be sure -->
-    </bean>
+	<!-- http transport definition -->
+	<bean id="httpTransport"
+		class="org.anuta.xmltv.transport.HTTPTransport">
+		<property name="proxyAddress" value="${http.proxy.address}" />
+		<property name="proxyPort" value="${http.proxy.port}" />
+		<property name="encoding" value="${http.encoding}" />
+	</bean>
 
-    <bean id="consoleExport" class="org.anuta.xmltv.export.ConsoleExport"/>
-    
-    <bean id="fileSystemExport" class="org.anuta.xmltv.export.FileSystemExport">
-    	<property name="fileName" value="out.xml"/>
-    </bean>
+	<bean id="consoleExport"
+		class="org.anuta.xmltv.export.ConsoleExport" />
+
+	<bean id="fileSystemExport"
+		class="org.anuta.xmltv.export.FileSystemExport">
+		<property name="fileName" value="${export.file}" />
+	</bean>
+
+	<!--  IMDB stuff -->
+	<bean id="imdbDownloader" class="org.anuta.imdb.IMDBDownloader">
+		<property name="ratingsUrl" value="${imdb.url}" />
+		<property name="userName" value="${imdb.login}" />
+		<property name="password" value="${imdb.password}" />
+		<property name="outputFile" value="imdb/ratings.list.gz" />
+		<property name="unzippedOutputFile" value="imdb/ratings.list" />
+	</bean>
+
 </beans>

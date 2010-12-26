@@ -30,7 +30,7 @@ public class ProgramComparator implements Comparator {
     private final static Log log = LogFactory.getLog(ProgramComparator.class);
 
     public int compare(Object a, Object b) {
-	if (log.isDebugEnabled()) log.debug("compare "+a+" and "+b);
+	//if (log.isDebugEnabled()) log.debug("compare "+a+" and "+b);
 	if ((a == null) || (b == null)) {
 	    logResult(0);
 	    return 0;
@@ -63,7 +63,7 @@ public class ProgramComparator implements Comparator {
     }
     
     private void logResult(int result) {
-	if (log.isDebugEnabled()) log.debug("Result: "+result);
+	//if (log.isDebugEnabled()) log.debug("Result: "+result);
     }
 
 }
