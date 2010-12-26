@@ -1,0 +1,10 @@
+Installation instructions:
+
+- Unzip downloaded archive in some directory
+- Rename conf/configuration.properties.example to /conf/configuration.properties
+- Customize conf/configuration.properties to your needs
+- Fine tune (if needed) conf/tvgids.xml and conf/imdb.xml
+- Fine tune start.sh script
+- Create database on mysql server using imdb/imdb.sql script if needed
+- Run it!
+- Enjoy it!

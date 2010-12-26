@@ -1,60 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.anuta.xmltv</groupId>
-	<artifactId>parent-pom</artifactId>
-	<packaging>pom</packaging>
-	<name>parent-pom</name>
-	<version>1.0</version>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.anuta.xmltv</groupId>
+  <artifactId>parent-pom</artifactId>
+  <packaging>pom</packaging>
+  <name>parent-pom</name>
+  <version>1.0</version>
 
-	<url>http://www.anuta.org/xmltv/</url>
+  <url>http://www.anuta.org/xmltv/</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-			<version>3.8</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+      <version>3.8</version>
+    </dependency>
+  </dependencies>
 
-	<modules>
-		<module>JavaXmlTvCore</module>
-		<module>XMLTVXMLBeans</module>
-	</modules>
+  <modules>
+    <module>JavaXmlTvCore</module>
+    <module>XMLTVXMLBeans</module>
+    <module>IMDBTools</module>
+  </modules>
 
-	<reporting>
-		<outputDirectory>target/site</outputDirectory>
-	</reporting>
+ <reporting>
+    <outputDirectory>target/site</outputDirectory>
+  </reporting>
 
-	<developers>
-		<developer>
-			<id>AFE</id>
-			<name>Alexander Fedorov</name>
-			<email>fedor@anuta.org</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<organization>www.anuta.org</organization>
-			<timezone>+1</timezone>
-		</developer>
-	</developers>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptors>
-						<descriptor>src/main/assembly/assembly.xml</descriptor>
-					</descriptors>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
+  <developers>
+      <developer>
+         <id>JLI</id>
+         <name>Jasper Linschoten</name>
+         <email>jasper.linschoten@gmail.com</email>
+         <roles>
+            <role>Developer</role>
+         </roles>
+         <organization>www.anuta.org</organization>
+         <timezone>+1</timezone>
+       </developer>         
+      <developer>
+         <id>AFE</id>
+         <name>Alexander Fedorov</name>
+         <email>fedor@anuta.org</email>
+         <roles>
+            <role>Developer</role>
+         </roles>
+         <organization>www.anuta.org</organization>
+         <timezone>+1</timezone>
+       </developer>         
+   </developers>
 
 </project>

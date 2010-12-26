@@ -23,7 +23,7 @@ import org.anuta.xmltv.beans.Channel;
 import org.anuta.xmltv.beans.Program;
 
 public interface EPGGrabber {
-    public List getPrograms(Channel channel, Date date, int day);
+    public List<Program> getPrograms(Channel channel, Date date, int day);
 
     public Program getProgram(Program p);
 

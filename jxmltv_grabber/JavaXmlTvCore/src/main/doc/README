@@ -1,0 +1,45 @@
+Hi there!
+
+This is another www.tvgids.nl grabber written in java. Due to java nature it is completely
+platform independant, so it can run on any platform wich has java on it. JDK 1.5 or higher 
+is required. You can download java for your operating system from http://java.sun.com/javase/downloads/index.jsp
+
+This grabber is NOT compatible with xmltv grabbers, but able to produce xmltv compatible
+xml file with epg. It can be used later in any xmltv compatible software. 
+
+The features of this grabber:
+- Platform independant
+- Fully customisable. Based on spring framework/xmlbeans/hibernate/apache-commons
+  Allows you fine tune your installation, categories, basically all!
+- Multithreaded 
+- HTML parsing based on xml tags, not on regular expressions. Minor layout changes will not affect it.
+- HTTP proxy support
+- Export to file or console
+- Kijkwijzer support
+- IMDB star rating support
+- Automatic IMDB file download (if it is changed)
+- Database (MYSQL) support for IMDB star rating
+- Extended customisable logging using commons-logging/log4j
+- Full html entities support
+- Full unicode support
+- Automatic timezone support
+- etc etc etc
+
+Release notes:
+
+1.2.3
+- Added time-out support to HttpTransport.
+- Added cache-cleaning
+
+1.1
+- Added multithread support
+- Added IMDB database support
+- Added IMDB star rating lookup
+
+1.0.1 Initial release. 
+
+For comments/feature requests please mail to fedor@anuta.org or port your messages to the 
+forum http://www.mythtv.nl/forum/index.php?topic=126.0
+
+Have a good grabbing!
+Fedor

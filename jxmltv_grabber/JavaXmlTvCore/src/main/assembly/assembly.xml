@@ -1,5 +1,6 @@
 <assembly>
 	<formats>
+		<format>tar.gz</format>
 		<format>zip</format>
 	</formats>
 	<includeBaseDirectory>false</includeBaseDirectory>
@@ -16,8 +17,24 @@
 			<outputDirectory>conf/</outputDirectory>
 		</fileSet>
 		<fileSet>
+			<directory>src/main/imdb</directory>
+			<outputDirectory>imdb/</outputDirectory>
+		</fileSet>		
+		<fileSet>
 			<directory>src/main/scripts</directory>
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
+		<fileSet>
+			<directory>src/main/doc</directory>
+			<outputDirectory>/</outputDirectory>
+		</fileSet>	
+		<fileSet>
+			<directory>src/main/log</directory>
+			<outputDirectory>log/</outputDirectory>
+		</fileSet>	
+		<fileSet>
+			<directory>src/main/xslt</directory>
+			<outputDirectory>xslt/</outputDirectory>
+		</fileSet>		
 	</fileSets>
 </assembly>

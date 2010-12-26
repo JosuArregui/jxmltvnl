@@ -1,7 +1,8 @@
 package org.anuta.xmltv.transport;
+
 /*
- * Java xmltv grabber for tvgids.nl
  * Copyright (C) 2008 Alex Fedorov
+ * Java xmltv grabber for tvgids.nl
  * fedor@anuta.org
  *
  * This program is free software; you can redistribute it and/or modify
@@ -16,7 +17,10 @@ package org.anuta.xmltv.transport;
  *
  * See COPYING.TXT for details.
  */
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 
 import org.anuta.xmltv.exceptions.TransportException;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
@@ -25,86 +29,127 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class HTTPTransport implements Transport {
-    private final static Log log = LogFactory.getLog(HTTPTransport.class);
-    private String proxyAddress;
-    private int proxyPort;
-    private int retryCount = 3;
-    private String encoding = "ISO8859_1";
+	private final static Log log = LogFactory.getLog(HTTPTransport.class);
+	private String proxyAddress;
+	private int proxyPort;
+	private int retryCount = 3;
+	private int socketTimeoutSeconds = 60;
+	private String encoding = "ISO8859_1";
 
-    public int getRetryCount() {
-	return retryCount;
-    }
+	public int getRetryCount() {
+		return retryCount;
+	}
 
-    public void setRetryCount(int retryCount) {
-	this.retryCount = retryCount;
-    }
+	public void setRetryCount(int retryCount) {
+		this.retryCount = retryCount;
+	}
 
-    public String getProxyAddress() {
-	return proxyAddress;
-    }
+	public void setSocketTimeoutSeconds(int socketTimeoutSeconds) {
+		this.socketTimeoutSeconds = socketTimeoutSeconds;
+	}
 
-    public void setProxyAddress(String proxyAddress) {
-	this.proxyAddress = proxyAddress;
-    }
+	public String getProxyAddress() {
+		return proxyAddress;
+	}
 
-    public int getProxyPort() {
-	return proxyPort;
-    }
+	public void setProxyAddress(String proxyAddress) {
+		this.proxyAddress = proxyAddress;
+	}
 
-    public void setProxyPort(int proxyPort) {
-	this.proxyPort = proxyPort;
-    }
+	public int getProxyPort() {
+		return proxyPort;
+	}
 
-    public String getEncoding() {
-	return encoding;
-    }
+	public void setProxyPort(int proxyPort) {
+		this.proxyPort = proxyPort;
+	}
 
-    public void setEncoding(String encoding) {
-	this.encoding = encoding;
-    }
+	public String getEncoding() {
+		return encoding;
+	}
 
-    public String getText(String url) throws TransportException {
-	HttpClient client = new HttpClient();
+	public void setEncoding(String encoding) {
+		this.encoding = encoding;
+	}
 
+	public String getText(String url) throws TransportException {
+
+		if (log.isDebugEnabled()) {
+			log.debug("Get text: " + url);
+		}
+
+		GetMethod method = createGetMethod(url);
+		
+		try {
+			return executeWithRetry(method);
+		} catch (HttpException e) {
+			throw new TransportException(url, e);
+		} catch (IOException e) {
+			throw new TransportException(url, e);
+		} finally {
+			method.releaseConnection();
+		}
+	}
 	
-	if (getProxyAddress() != null) {
-	    if (log.isDebugEnabled())
-		log.debug("Using proxy: " + getProxyAddress() + ":" + getProxyPort());
-	    client.getHostConfiguration().setProxy(getProxyAddress(), getProxyPort());
+	private String executeWithRetry(GetMethod method) throws TransportException, HttpException, IOException {
+
+		int tries = 0;
+		while (tries <= getRetryCount()) {
+			try {
+ 
+				int statusCode = createHttpClient().executeMethod(method);
+
+				if (statusCode != HttpStatus.SC_OK)
+					throw new TransportException(
+							"Server response not ok, i've got " + statusCode);
+
+				StringBuilder sb = new StringBuilder();
+				BufferedReader br = new BufferedReader(new InputStreamReader(
+												method.getResponseBodyAsStream(), getEncoding()));
+
+				String s;
+				while ((s = br.readLine()) != null) {
+					sb.append(s);
+					if (s.toLowerCase().contains("</html>")) {
+						log.debug("got complete html, no need to read or wait for whitespace...");
+						break;
+					}
+				}
+				return sb.toString();
+			} catch (SocketTimeoutException e) {
+				log.info("timed out: but retrying (" + tries + ")");
+			}
+			tries++;
+		}
+		throw new TransportException("Request timed out.");
 	}
-	GetMethod method = new GetMethod(url);
-	if (getRetryCount() != 0) {
-	    if (log.isDebugEnabled())
-		log.debug("Set retry count to " + getRetryCount());
-	    method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler(getRetryCount(), false));
+	
+	private HttpClient createHttpClient() {
+		HttpClient client = new HttpClient();
+		if (StringUtils.isNotEmpty(getProxyAddress())) {
+			client.getHostConfiguration().setProxy(getProxyAddress(),
+					getProxyPort());
+		}
+		return client;
 	}
 
-	try {
-	    // Execute the method.
-	    int statusCode = client.executeMethod(method);
+	private GetMethod createGetMethod(String url) {
+		GetMethod method = new GetMethod(url);
+		if (getRetryCount() != 0) {
+			if (log.isDebugEnabled())
+				log.debug("Set retry count to " + getRetryCount());
+			method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+					new DefaultHttpMethodRetryHandler(getRetryCount(), false));
+		}
 
-	    if (statusCode != HttpStatus.SC_OK)
-		throw new TransportException("Server responce not ok, i've got " + statusCode);
-
-	    byte[] responseBody = method.getResponseBody();
-	    String ret = null;
-	    if (getEncoding() != null)
-		ret = new String(responseBody, getEncoding());
-	    else
-		ret = new String(responseBody);
-	    if (log.isTraceEnabled())
-		log.trace("Received document: " + ret);
-	    return ret;
-	} catch (HttpException e) {
-	    throw new TransportException(e);
-	} catch (IOException e) {
-	    throw new TransportException(e);
-	} finally {
-	    method.releaseConnection();
+		method.getParams().setIntParameter(
+					HttpMethodParams.SO_TIMEOUT, this.socketTimeoutSeconds * 1000);
+		return method;
 	}
-    }
+
 }

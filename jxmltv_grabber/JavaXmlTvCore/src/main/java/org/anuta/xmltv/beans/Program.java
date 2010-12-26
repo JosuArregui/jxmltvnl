@@ -25,14 +25,14 @@ import java.util.List;
 public class Program {
     private String url;
     private String title;
-    private Date startDate;
+    private String longTitle;
+	private Date startDate;
     private Date endDate;
     private boolean fullyLoaded = false;
     private String description;
     private String type;
     private String ganre;
     private String premiere;
-    // private List actors = new ArrayList();
     private String channelId;
     private String subTitle;
     private String presentors;
@@ -40,13 +40,21 @@ public class Program {
     private String directors;
     private String specials;
     private String clumpIdx;
-    private List rating = new ArrayList();
+    private List<Rating> rating = new ArrayList<Rating>();
 
-    public List getRating() {
-	return rating;
+    public String getLongTitle() {
+		return longTitle;
+	}
+
+	public void setLongTitle(String longTitle) {
+		this.longTitle = longTitle;
+	}
+    
+    public List<Rating> getRating() {
+    	return rating;
     }
 
-    public void setRating(List rating) {
+    public void setRating(List<Rating> rating) {
 	this.rating = rating;
     }
 
