@@ -179,14 +179,6 @@ public class TVGIDSNLGrabber implements EPGGrabber {
         return td;
     }
 
-    private String formatDescription(final String description) {
-        if (noData.equals(description)) {
-            return "";
-        } else {
-            return description.trim();
-        }
-    }
-
     public final List getPrograms(final Channel channel, final Date date, final int day) {
         Date lastStartDate = null;
         Date lastEndDate = null;
@@ -430,7 +422,6 @@ public class TVGIDSNLGrabber implements EPGGrabber {
                 transformer.transform(new javax.xml.transform.stream.StreamSource(new ByteArrayInputStream(xml
                     .getBytes("UTF-8"))), new StreamResult(sw));
                 String ret = sw.toString().trim();
-                log.debug("RET: " + ret);
                 ret = StringHelper.unescapeHTML(ret);
                 log.debug("RETUS: " + ret);
                 return ret;
@@ -578,7 +569,6 @@ public class TVGIDSNLGrabber implements EPGGrabber {
             TagNode body = node.findElementByName("body", true);
 
             String xml = getXml(body);
-
             String description = extractText(xml, DESCRIPTION_XSL);
             String longTitle = extractText(xml, TITLE_XSL);
             
@@ -735,9 +725,9 @@ public class TVGIDSNLGrabber implements EPGGrabber {
         grabber.setRoleMapping(new HashMap());
 
         Program p = new Program();
-        p.setUrl(grabber.getTvgidsurl() + "/programma/7939782/Advocaat_van_de_duivel/");
+        p.setUrl(grabber.getTvgidsurl() + "/programma/10264824/Groundhog_day/");
         grabber.getProgram(p);
-
+        System.out.println(p);
     }
 
     public final String getXsltPath() {

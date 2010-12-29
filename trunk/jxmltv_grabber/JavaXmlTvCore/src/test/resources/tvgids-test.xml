@@ -2,10 +2,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	
-
-
-
 	<bean id="grabberFactory"
 		class="org.anuta.xmltv.XMLTVGrabberTaskFactory">
 	
@@ -19,8 +15,6 @@
 				<value>drama</value>
 			</set>
 		</property>
-
-	
 	</bean>
 
 	<!-- TVGids grabber definition -->
