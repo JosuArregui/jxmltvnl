@@ -8,7 +8,7 @@
 	<groupId>org.anuta.xmltv</groupId>
 	<artifactId>JavaXmlTvCore</artifactId>
 	<name>JavaXmlTvCore</name>
-	<version>1.2.5</version>
+	<version>1.2.6</version>
 
 	<properties>
 		<findbugs.version>1.3.8</findbugs.version>

@@ -181,16 +181,41 @@ public class Program {
     }
 
     public String toString() {
-	StringBuffer sb = new StringBuffer();
-	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-	sb.append(sdf.format(getStartDate())).append(" - ").append(sdf.format(getEndDate())).append(" - ").append(getTitle()).append(" | ").append(getDescription());
-	return sb.toString();
+		StringBuffer sb = new StringBuffer();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		if (startDate != null) {
+			sb.append(sdf.format(getStartDate()));
+		} else {
+			sb.append("null");
+		}
+		sb.append(" - ");
+		if (endDate != null) {
+			sb.append(sdf.format(getEndDate()));
+		} else {
+			sb.append("null");
+		}
+		sb.append("\n");
+		sb.append(url).append("\n");
+		sb.append("title:").append(title).append("\n");
+		sb.append("longTitle:").append(longTitle).append("\n");
+		sb.append("description:").append(description).append("\n");
+		sb.append("type:").append(type).append("\n");
+		sb.append("ganre:").append(ganre).append("\n");
+		sb.append("premiere:").append(premiere).append("\n");
+		sb.append("channelId:").append(channelId).append("\n");
+		sb.append("subTitle:").append(subTitle).append("\n");
+		sb.append("presentors:").append(presentors).append("\n");
+		sb.append("actors:").append(actors).append("\n");
+		sb.append("directors:").append(directors).append("\n");
+		sb.append("specials:").append(specials).append("\n");
+		sb.append("clumpIdx:").append(clumpIdx).append("\n");
+	
+		return sb.toString();
     }
 
     public String getHash() {
 	StringBuffer sb = new StringBuffer();
-	SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy-HHmm");
-	sb.append(sdf.format(getStartDate())).append("-").append(sdf.format(getEndDate())).append("-").append(getChannelId()).append("-").append(getTitle());
+	sb.append(getStartDate()).append("-").append(getEndDate()).append("-").append(getChannelId()).append("-").append(getTitle());
 	return sb.toString();
     }
 
