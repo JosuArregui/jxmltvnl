@@ -194,9 +194,9 @@ public class Program {
 		} else {
 			sb.append("null");
 		}
-		sb.append("\n");
-		sb.append(url).append("\n");
+		sb.append(":");
 		sb.append("title:").append(title).append("\n");
+		sb.append(url).append("\n");
 		sb.append("longTitle:").append(longTitle).append("\n");
 		sb.append("description:").append(description).append("\n");
 		sb.append("type:").append(type).append("\n");

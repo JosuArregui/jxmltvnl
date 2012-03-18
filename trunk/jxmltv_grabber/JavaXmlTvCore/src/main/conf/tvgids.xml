@@ -41,7 +41,7 @@
 
 	<!-- TVGids grabber definition -->
 	<bean id="tvgids"
-		class="org.anuta.xmltv.grabber.tvgidsnl.TVGIDSNLGrabber">
+		class="org.anuta.xmltv.grabber.tvgidsnl.TVGidsJsonGrabber">
 		<property name="tvgidsurl" value="http://www.tvgids.nl" />
 		<property name="xsltPath" value="xslt"/>
 		<property name="noData"

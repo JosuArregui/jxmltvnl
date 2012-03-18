@@ -1,0 +1,881 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nl" xml:lang="nl">
+
+<head>
+
+		<!-- Begin Sitestat4 Loadingtime1 code --> 
+
+<script type="text/javascript">ns_loadingtime1=(new Date()).getTime()</script>
+
+<!-- End Sitestat4 Loadingtime1 code -->
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+	<meta http-equiv="refresh" content="72000" />
+
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+
+	<meta name="author" content="iSource BV" />
+
+	<meta name="description" content="Clairy Polak bespreekt het laatste medianieuws in een nieuws seizoen van De waan van de dag." />
+
+	<meta name="keywords" content="" />
+
+	<meta name="kreezo-token" content="F2Q2qv91" />
+
+	<meta name="kreezo-keywords" content="De waan van de dag" />
+
+	<meta name="kreezo-424-Metacafe-keywords" content="" />
+
+	<meta name="kreezo-425-Dailymotion-keywords" content="" />
+
+	<meta name="kreezo-426-Youtube-keywords" content="" />
+
+	<meta name="kreezo-485-Twitter-keywords" content="" />
+
+	<meta name="kreezo-486-Facebook posts-keywords" content="" />
+
+	<meta name="kreezo-487-Hyveswww-keywords" content="" />
+
+
+
+	<title>TVGids.nl - Artikel &raquo; Het nieuws over het nieuws</title>
+
+
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://tvgidsassets.nl/v7/css/combined.css" />
+
+	<link rel="stylesheet" type="text/css" media="print" href="http://tvgidsassets.nl/v7/css/print.css" />
+
+	<link rel="stylesheet" media="screen" type="text/css" href="http://tvgidsassets.nl/v7/css/template.blue2.css" />	<link rel="stylesheet" href="http://www.kreezo.com/css/tvgids.css" type="text/css" />
+
+
+
+	<script type="text/javascript" src="http://tvgidsassets.nl/v7/js/combined.js.jgz"></script>
+
+
+
+			
+
+	<!--Ilse media script-->
+
+	<script type="text/javascript">
+
+	var WlWebsiteId = "tvgids.nl";
+
+			var WlContentGroup;
+
+		WlContentGroup = "tvgids.nl/Nederland 2/Amusement";
+
+		if (typeof(wlrcmd) == 'undefined') var wlrcmd = '';
+
+	document.write('<scri' + 'pt type="text/javascript" src="http://rc.bt.ilsemedia.nl/Tag/ilsemedia/JS/' + WlWebsiteId + '/Gt.js"></scri' + 'pt>');
+
+	</script>
+
+
+
+</head>
+
+
+
+<body class="blue">
+
+
+
+					
+
+<div id="container">
+
+
+
+	<div id="header">
+
+
+
+		<div class="rightImg"></div>
+
+
+
+		<div class="tips">
+
+			<h3>Gesponsorde links</h3>
+
+			<ul>
+
+							<li><a href="http://nl.sitestat.com/klo/bvpb/s?cineart_adm_tekstlink&ns_type=clickout" rel="external">Why deny what you desire the most?</a></li>
+
+							<li><a href="http://clicks.m4n.nl/_c?aid=8749&adid=28982" rel="external">Studentmobiel aanbiedingen!</a></li>
+
+							<li><a href="http://nl.sitestat.com/klo/bvpb/s?greenpeace_graadmeter&ns_type=clickout" rel="external">Hoe groen is jouw energiebedrijf? </a></li>
+
+						</ul>
+
+		</div>
+
+
+
+		<div class="imgContent">
+
+			<div class="logo">
+
+				<h1><a href="/index.php"><img src="http://tvgidsassets.nl/img/logo.gif" alt="" /></a></h1>
+
+			</div>
+
+
+
+			<div id="headerSelector"></div>
+
+
+
+			<div id="flashTeaser">
+
+								<div class="item" >
+
+											<img src="http://tvgidsassets.nl/uploadtop/t/teaser_informatief3.jpg" alt=""/>
+
+										<div class="text">
+
+											<h3>Informatief</h3>
+
+						
+
+										</div>
+
+				</div>
+
+								<div class="item" style="display:none">
+
+											<img src="http://tvgidsassets.nl/img/pixel.gif" rel="http://tvgidsassets.nl/uploadtop/t/teaser_informatief2.jpg" alt=""/>
+
+										<div class="text">
+
+											<h3>Informatief</h3>
+
+						
+
+										</div>
+
+				</div>
+
+								<div class="item" style="display:none">
+
+											<img src="http://tvgidsassets.nl/img/pixel.gif" rel="http://tvgidsassets.nl/uploadtop/t/teaser_informatief1.jpg" alt=""/>
+
+										<div class="text">
+
+											<h3>Informatief</h3>
+
+						
+
+										</div>
+
+				</div>
+
+							</div>
+
+
+
+		</div>
+
+		
+
+		<div id="search-pr">
+
+			<form id="formSearch" name="formSearch" method="get" action="/zoeken/">
+
+				<input type="text" id="formSearchQuery" value="Zoek een programma" name="q" />		
+
+				<input type="submit" value="" class="search-clicker" />
+
+			</form>
+
+		</div>
+
+		<a href="javascript:document.formSearch.submit()" class="search-clicker">&nbsp;</a>
+
+		
+
+		<ul id="menu">
+
+	<li class="mainitem first current">
+
+		<a href="/index.php">TV Gids    </a>
+
+		<ul class="submenu">
+
+					<li><a href="/index.php">Home</a></li>
+
+					<li><a href="/lijsten/verticaal">Alle programma's</a></li>
+
+					<li><a href="/lijsten/nustraks/">Nu & Straks</a></li>
+
+					<li><a href="/lijsten/primetime">Primetime</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="">Genres    </a>
+
+		<ul class="submenu">
+
+					<li><a href="/sport/">Sport</a></li>
+
+					<li><a href="/films/">Films</a></li>
+
+					<li><a href="/seriesoap/">Series & soaps</a></li>
+
+					<li><a href="/informatief/">Informatief</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="">Videotheek</a>
+
+		<ul class="submenu">
+
+					<li><a href="/pagina/Mejane/">MeJane</a></li>
+
+					<li><a href="/filmshuren/">Direct movie</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="">Mijn TVGids.nl</a>
+
+		<ul class="submenu">
+
+					<li><a href="http://www.tvgids.nl/perstvgids/">Mijn aanbevelingen / Agenda</a></li>
+
+					<li><a href="/pagina/perstvgids_uitleg/">Uitleg</a></li>
+
+					<li><a href="/perstvgids/auth/login/">Inloggen</a></li>
+
+					<li><a href="/perstvgids/aanmelden/">Aanmelden</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="">Funpagina</a>
+
+		<ul class="submenu">
+
+					<li><a href="/pagina/Fun_games/">Fungames</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="">Apps & mobiel</a>
+
+		<ul class="submenu">
+
+					<li><a href="/pagina/tvgidseasy">TVGids Easy</a></li>
+
+					<li><a href="/pagina/Ipad/">iPad-app</a></li>
+
+					<li><a href="/pagina/Iphone/">iPhone-app</a></li>
+
+					<li><a href="/pagina/android/">Android App</a></li>
+
+					<li><a href="/pagina/mobiel/">TVGids.nl mobiel</a></li>
+
+				</ul>
+
+	</li>
+
+	<li class="mainitem">
+
+		<a href="http://www.tvgids.nl/shownieuws/">Shownieuws</a>
+
+		<ul class="submenu">
+
+					<li><a href="http://www.tvgids.nl/shownieuws/">Actueel</a></li>
+
+					<li><a href="http://www.tvgids.nl/shownieuws/meershownieuws">Archief</a></li>
+
+					<li><a href="http://www.tvgids.nl/pagina/iPad_Shownieuws/">iPad app</a></li>
+
+				</ul>
+
+	</li>
+
+</ul>
+
+
+
+<div style="clear:both"></div>
+
+				<div class="leaderboard">
+
+				
+
+							<div><!--topbanner-->
+
+<!--  begin ad tag: P4442.Tvgids/artikel  (728x90) -->
+
+<script language="JavaScript" type="text/javascript">
+
+ord = (typeof(ord)!='undefined') ? ord : Math.random()*10000000000000000;
+
+document.write('<scr'+'ipt language="JavaScript" src="http://ad.nl.doubleclick.net/adj/P4442.Tvgids/artikel.46453;sz=728x90;tile=1;kw='+wlrcmd+';ord='+ord+'?" type="text/javascript"></scr'+'ipt>');
+
+</script>
+
+<noscript>
+
+<a href="http://ad.nl.doubleclick.net/jump/P4442.Tvgids/artikel.46453;sz=728x90;tile=1;ord=123456789?" target="_blank"><img src="http://ad.nl.doubleclick.net/ad/P4442.Tvgids/artikel.46453;sz=728x90;tile=1;ord=123456789?" width="728" height="90" border="0" alt=""></a>
+
+</noscript>
+
+<!-- End ad tag -->
+
+<!--end_topbanner--></div>
+
+						
+
+		</div>
+
+		
+
+	</div>
+
+	
+
+	
+<div id="content">
+
+	<div id="content-header">
+
+			
+		<h1>Het nieuws over het nieuws</h1>
+
+		<div style="clear:both"></div>
+
+	</div>
+
+	<div id="content-banner-skyscraper">
+					<!--skyscraper-->
+
+<!--  begin ad tag: P4442.Tvgids/artikel  (120x600) -->
+
+<script language="JavaScript" type="text/javascript">
+
+ord = (typeof(ord)!='undefined') ? ord : Math.random()*10000000000000000;
+
+document.write('<scr'+'ipt language="JavaScript" src="http://ad.nl.doubleclick.net/adj/P4442.Tvgids/artikel.46453;sz=120x600;tile=2;kw='+wlrcmd+';ord='+ord+'?" type="text/javascript"></scr'+'ipt>');
+
+</script>
+
+<noscript>
+
+<a href="http://ad.nl.doubleclick.net/jump/P4442.Tvgids/artikel.46453;sz=120x600;tile=2;ord=123456789?" target="_blank"><img src="http://ad.nl.doubleclick.net/ad/P4442.Tvgids/artikel.46453;sz=120x600;tile=2;ord=123456789?" width="120" height="600" border="0" alt=""></a>
+
+</noscript>
+
+<!-- End ad tag -->
+
+<!--end_skyscraper-->			</div>
+
+	<div id="content-col-left">
+
+		<div id="prog-content">
+																		<img src="http://tvgidsassets.nl/upload/c/cpolak12_groot.jpg" style="float:right;padding:0 0 5px 15px" alt="Het nieuws over het nieuws" />
+													<p class="summary">Clairy Polak bespreekt het laatste medianieuws in een nieuws seizoen van <em>De waan van de dag.</em></p>				<p>Journalisten en nieuwsconsumenten opgelet: <em>De waan van de dag </em>begint aan een nieuw seizoen. In dit programma bespreekt Clairy Polak het laatste medianieuws. Haar doel: de kijker laten zien hoe nieuws tot stand komt, hoe het zich ontwikkelt en wat de rol van kranten en tv-programma&rsquo;s hierin is.</p>
+
+<p><strong>Boodschapper</strong><br />
+
+Op de site van het programma legt Polak uit waarom dit belangrijk is. &ldquo;De boodschapper heeft het altijd gedaan: de media liggen onder vuur. Soms is dat terecht, maar soms ook helemaal niet. Wij willen laten zien hoe het komt en dan de kijker laten oordelen.&rdquo;</p>
+					</div>
+
+		<div id="related-articles">
+					</div>
+
+				<div id="prog-nextprev">
+			<a href="/programma/12353971/Per_seconde_wijzer/"id="prog-nextprev-prev">Vorig programma</a>			<a href="/programma/12426396/Zembla/" id="prog-nextprev-next">Volgend programma</a>			<div style="clear:both"></div>
+		</div>
+		
+				<div id="prog-video">
+
+							<a href="#" rel="" onclick="showVideo2(6394, 'De waan van de dag', false, 'De waan van de dag', 'publiekeomroeppromo', 'eigen', false);return false;"></a>
+				<img src="http://tvgidsassets.nl/upload/2/2P1603MO_WAANVAND.jpg" width="550" alt="Bekijk de promo over De waan van de dag" />
+			
+			<script type="text/javascript">showVideoPlaybutton()</script>
+
+		</div>
+		
+
+				<div id="prog-functionbar">
+			<div id="prog-functionbar-site">
+				<a href="#perstvgids" title="Plaats dit programma in mijn TV Agenda" onclick="addProg('12362182','Amusement','',event);return false;"><img src="http://tvgidsassets.nl/img/btn_pbg_a.gif" alt="" /></a>
+				<a href="/perstvgids/kijkwekker/12362182/" title="Waarschuw mij met een SMS"><img src="http://tvgidsassets.nl/img/btn_sms.gif" alt="" /></a>
+				<a href="/outlook/12362182/" title="Plaats dit programma in mijn Outlook-agenda"><img src="http://tvgidsassets.nl/img/btn_outlook.gif" alt="" /></a>
+				<a href="javascript:printPage()" title="Print de programmagegevens"><img src="http://tvgidsassets.nl/img/btn_print.gif" alt="" /></a>
+							</div>
+			<div id="prog-functionbar-social">
+									<a href="https://plusone.google.com/_/+1/confirm?hl=nl&url=http://www.tvgids.nl/artikel/46453/Het_nieuws_over_het_nieuws/&title=http://www.tvgids.nl/artikel/46453/Het_nieuws_over_het_nieuws/" rel="external" id="prog-function-googleplus" title="Plaats op Google+">Plaats op Google+</a>
+					<a href="http://www.facebook.com/sharer.php?u=http://www.tvgids.nl/artikel/46453/Het_nieuws_over_het_nieuws/" rel="external" id="prog-function-facebook" title="Plaats op facebook">Plaats op Facebook</a>
+					<a href="http://twitter.com/?status=RT@TVGidsNLUpdate Het nieuws over het nieuws http://tvgids.nl/a/46453/" rel="external" id="prog-function-twitter" title="Plaats op twitter">Plaats op Twittter</a>
+								<a href="/mailafriend/12362182/" id="prog-function-mail">E-mail naar een vriend</a>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		
+		<div id="prog-banner-content">
+							<script type="text/javascript">
+
+document.write('<scr'+'ipt type="text/javascript" src="http://ad.360yield.com/adj?p=1037&w=468&h=60&tz='+(new Date().getTimezoneOffset())+'&click3rd="><\/scr'+'ipt>');
+
+</script>
+
+<noscript>
+
+<a target="_blank" href="http://ad.360yield.com/jump?p=1037&w=468&h=60&click3rd=">
+
+  <img border="0" alt="" width="468" height="60" src="http://ad.360yield.com/ad?p=1037&w=468&h=60&click3rd="/>
+
+</a>
+
+</noscript>					</div>
+
+				<div class="prog-related" id="prog-related-banner"><div class="prog-related" id="prog-relatedphotos">
+
+            <div class="prog-related-header">
+
+                Gerelateerde foto's
+
+                <img src="http://tvgidsassets.nl/v3/img/ico_prog_related_kalooga.png"  alt="" />
+
+            </div>
+
+            <div class="prog-related-content">
+
+                <script type="text/javascript" src="http://publishing.kalooga.com/overloadWidget?publisherId=557&overloadId=12362182&widgetId=6169"></script>
+
+                <script type="text/javascript">
+
+            if (typeof(kalooga_wf) == 'undefined') 
+
+{
+
+$J('div#prog-relatedphotos').hide();
+
+}
+
+else
+
+{
+
+          $J("div#prog-related-banner").css("margin-top","0px");
+
+}
+
+
+
+</script>
+
+
+
+            </div>
+
+            <div class="prog-related-footer"></div>
+
+        </div>
+
+</div>
+		
+				<div class="prog-related" id="prog-relatedchannels">
+			<div class="prog-related-header">Ook op TV rond dit tijdstip</div>
+			<div class="prog-related-content">
+							<a href="/programma/12353704/Flikken_Maastricht/" title="Flikken Maastricht">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/1.png" alt="Nederland 1" />
+				</a>
+							<a href="/programma/12362182/De_waan_van_de_dag/" title="De waan van de dag">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/2.png" alt="Nederland 2" />
+				</a>
+							<a href="/programma/12368576/Voetbal_International/" title="Voetbal International">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/46.png" alt="RTL 7" />
+				</a>
+							<a href="/programma/12372665/A_mighty_heart/" title="A mighty heart">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/92.png" alt="RTL 8" />
+				</a>
+							<a href="/programma/12424478/Journey_to_the_center_of_the_earth/" title="Journey to the center of the earth">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/36.png" alt="SBS 6" />
+				</a>
+							<a href="/programma/12353148/Top_Gear/" title="Top Gear">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/34.png" alt="Veronica" />
+				</a>
+							<a href="/programma/12388910/Coal/" title="Coal">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/29.png" alt="Discovery Channel" />
+				</a>
+							<a href="/programma/12348505/The_indestructibles/" title="The indestructibles">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/18.png" alt="National Geographic" />
+				</a>
+							<a href="/programma/12405330/Rusland_voor_beginners/" title="Rusland voor beginners">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/6.png" alt="KETNET/Canvas" />
+				</a>
+							<a href="/programma/12422250/Jersey_shore/" title="Jersey shore">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/25.png" alt="MTV" />
+				</a>
+							<a href="/programma/12497844/Vitesse_-_Heracles_Almelo/" title="Vitesse - Heracles Almelo">
+					<img src="http://tvgidsassets.nl/img/channels/53x27/148.png" alt="Eredivisie Live" />
+				</a>
+						</div>
+			<div class="prog-related-footer"></div>
+		</div>
+		
+		<div style="clear:both"></div>
+
+	</div>
+
+	<div id="content-col-right">
+
+				<div id="prog-info">
+
+			<div id="prog-info-content">
+
+				<h2>In het kort</h2>
+
+				<ul id="prog-info-content-colleft">
+					<li><strong>Titel:</strong>De waan van de dag</li>
+					<li><strong>Zender:</strong>Nederland 2</li>
+					<li><strong>Datum:</strong>16 maart 2012</li>
+					<li><strong>Uitzendtijd:</strong>20:55 - 21:25 uur</li>
+					<li><strong>Genre:</strong>Amusement</li>
+				</ul>
+
+				<ul id="prog-info-content-colright">
+															<li><strong>Presentatie:</strong>Clairy Polak</li>																																																						</ul>
+
+				<div style="clear:both"></div>
+
+			</div>
+
+			<div id="prog-info-footer"></div>
+
+		</div>
+		
+		<div class="content-block" id="prog-sponsorlinks">
+			<div class="content-block-header">Gesponsorde links</div>
+			<div class="content-block-content">
+				<table>
+																							<tr>
+						<td><img src="http://tvgidsassets.nl/upload/k/kidz5_22februri.jpg" alt="kidz5_22februri.jpg" /></td>
+						<td><a href="http://nl.sitestat.com/klo/bvpb/s?vandedag5daykids&ns_type=clickout" rel="external">Probeer Kidz5aday voor 29,95!<br /></a></td>
+					</tr>
+																												<tr>
+						<td><img src="http://tvgidsassets.nl/upload/k/kalooga.JPG" alt="kalooga.JPG" /></td>
+						<td><a href="http://nl.sitestat.com/klo/bvpb/s?Kalooga_VSSreader_tekstlink&ns_type=clickout">Nieuw: VSS-Gadget van TVGids.nl<br /></a></td>
+					</tr>
+																			<tr>
+						<td><img src="http://tvgidsassets.nl/upload/l/logo95-78.jpg" alt="logo95-78.jpg" /></td>
+						<td><a href="http://nl.sitestat.com/klo/bvpb/s?Facebook_TVGids&ns_type=clickout" rel="external">Nog geen fan van TVGids.nl?<br /></a></td>
+					</tr>
+																			<tr>
+						<td></td>
+						<td><a href="http://ads.unibet.com/unibet/lp/campaigns/?locale=nl_NL&id=102125001" rel="external">Unibet: zet in op de Eredivisie en win!<br /></a></td>
+					</tr>
+													</table>
+			</div>
+			<div class="content-block-footer"></div>
+		</div>
+
+				<div class="content-block" id="prog-tips">
+			<div class="content-block-header">Tips voor vanavond</div>
+			<div class="content-block-content">
+				<table>
+																		<tr>
+								<td><img src="http://tvgidsassets.nl/img/channels/32x16/37.png" alt="" /></td>
+								<td>20:30</td>
+								<td>-</td>
+								<td>
+									<a href="/artikel/46436/Verdachte_in_eigen_onderzoek/">
+																					Twisted
+																			</a>
+								</td>
+								<td style="width:100%"></td>
+							</tr>
+																								<tr>
+								<td><img src="http://tvgidsassets.nl/img/channels/32x16/34.png" alt="" /></td>
+								<td>20:30</td>
+								<td>-</td>
+								<td>
+									<a href="/artikel/46437/Jackie_Chan_en_Chris_Tucker/">
+																					Rush hour
+																			</a>
+								</td>
+								<td style="width:100%"></td>
+							</tr>
+																								<tr>
+								<td><img src="http://tvgidsassets.nl/img/channels/32x16/39.png" alt="" /></td>
+								<td>22:15</td>
+								<td>-</td>
+								<td>
+									<a href="/artikel/46439/Carice_van_Houten_is_Ingrid_Jonker/">
+																					Black Butterflies
+																			</a>
+								</td>
+								<td style="width:100%"></td>
+							</tr>
+																																																</table>
+			</div>
+			<div class="content-block-footer"></div>
+		</div>
+		
+		<div id="content-banner-rectangle">
+							<!--  begin ad tag: P4442.Tvgids/artikel  (336x280) -->
+
+<script language="JavaScript" type="text/javascript">
+
+ord = (typeof(ord)!='undefined') ? ord : Math.random()*10000000000000000;
+
+document.write('<scr'+'ipt language="JavaScript" src="http://ad.nl.doubleclick.net/adj/P4442.Tvgids/artikel.46453;sz=336x280;tile=3;kw='+wlrcmd+';ord='+ord+'?" type="text/javascript"></scr'+'ipt>');
+
+</script>
+
+<noscript>
+
+<a href="http://ad.nl.doubleclick.net/jump/P4442.Tvgids/artikel.46453;sz=336x280;tile=3;ord=123456789?" target="_blank"><img src="http://ad.nl.doubleclick.net/ad/P4442.Tvgids/artikel.46453;sz=336x280;tile=3;ord=123456789?" width="336" height="280" border="0" alt=""></a>
+
+</noscript>
+
+<!-- End ad tag -->					</div>
+
+	</div>
+
+	<div style="clear:both"></div>
+
+</div>
+
+
+
+	
+
+	<div class="clearer"></div>
+
+
+
+</div>
+
+
+
+<div id="footer-container">
+
+
+
+	<div id="footer">
+
+
+
+		<div id="footer-banner-left">
+
+							<script type="text/javascript"><!--
+
+google_ad_client = "ca-pub-8926653707597038";
+
+/* Button II */
+
+google_ad_slot = "1063411649";
+
+google_ad_width = 125;
+
+google_ad_height = 125;
+
+//-->
+
+</script>
+
+<script type="text/javascript"
+
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+
+</script>					</div>
+
+
+
+		<div class="footer-list" id="footer-filmtop">
+
+			<strong>Film top 5</strong>
+
+			<ul>
+
+							<li><a href="http://www.directmovie.nl/partners/directmovie.php?id=251_16_3_9" rel="external">After Sex</a></li>
+
+							<li><a href="http://www.directmovie.nl/partners/directmovie.php?id=251_16_3_9" rel="external">Pledge This!</a></li>
+
+							<li><a href="http://www.directmovie.nl/partners/directmovie.php?id=251_16_3_9" rel="external">Tomorrow, When the War Began</a></li>
+
+							<li><a href="http://www.directmovie.nl/partners/directmovie.php?id=251_16_3_9" rel="external">Bed & Breakfast</a></li>
+
+							<li><a href="http://www.directmovie.nl/partners/directmovie.php?id=251_16_3_9" rel="external">Formosa Betrayed</a></li>
+
+						</ul>
+
+		</div>
+
+
+
+		<div id="footer-banner-right">
+
+							<script type="text/javascript"><!--
+
+google_ad_client = "ca-pub-8926653707597038";
+
+/* Button II */
+
+google_ad_slot = "1063411649";
+
+google_ad_width = 125;
+
+google_ad_height = 125;
+
+//-->
+
+</script>
+
+<script type="text/javascript"
+
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+
+</script>					</div>
+
+
+
+		<div class="footer-list" id="footer-about">
+
+			<strong>Over TVGids.nl</strong>
+
+			<ul>
+
+								<li><a href="/pagina/contact/" class="testa" title="Contact">Contact</a></li>
+
+								<li><a href="/pagina/colofon/" class="testa" title="Colofon">Colofon</a></li>
+
+								<li><a href="/pagina/adverteren/" class="testa" title="Adverteren">Adverteren</a></li>
+
+								<li><a href="/pagina/privacy/" class="testa" title="Privacy statement">Privacy statement</a></li>
+
+							</ul>
+
+		</div>
+
+
+
+		<div style="clear:both"></div>
+
+
+
+	</div>
+
+
+
+</div>
+
+
+
+<!-- sitestat4 code -->
+
+<script type="text/javascript">
+
+	<!--
+
+
+
+/**/
+
+
+
+	function sitestat(ns_l)
+
+	{
+
+		ns_l+="&ns__t="+(new Date()).getTime();ns_pixelUrl=ns_l;
+
+		ns_0=document.referrer;
+
+		ns_0=(ns_0.lastIndexOf("/")==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf("/"),0):ns_0;
+
+
+
+		if(ns_0.length>0)ns_l+="&ns_referrer="+escape(ns_0);
+
+
+
+		if(document.images)
+
+		{
+
+			ns_1=new Image();ns_1.src=ns_l;
+
+		}
+
+		else
+
+		{
+
+			document.write('<img src='+ns_l+' alt="(statistieken)" />');
+
+		}
+
+	}
+
+
+
+/**/
+
+
+
+		sitestat("http://nl.sitestat.com/klo/bvpb/s?tvgids.artikel.46453_Hetnieuwsoverhetnieuws&category=tvgids&ns_channel=tvgids&ns_webdir=tvgids");
+
+	//-->
+
+</script>
+
+<noscript>
+
+	<img src="http://nl.sitestat.com/klo/bvpb/s?tvgids.artikel.46453_Hetnieuwsoverhetnieuws&category=tvgids&ns_channel=tvgids&ns_webdir=tvgids" alt="(statistieken)" />
+
+</noscript>
+
+<!-- /sitestat4 code -->
+
+
+
+<!-- Begin SiteStat4 Technical code -->
+
+<script type="text/javascript">var ns_scriptversion="130";// 2002-02-13</script>
+
+<!-- End SiteStat4 Technical code -->
+
+
+
+<!-- Begin Sitestat4 Loadingtime2 code --> 
+
+<script type="text/javascript">ns_loadingtime2=(new Date()).getTime()</script>
+
+<!-- End Sitestat4 Loadingtime2 code -->
+
+
+
+
+
+
+</body>
+
+</html>
