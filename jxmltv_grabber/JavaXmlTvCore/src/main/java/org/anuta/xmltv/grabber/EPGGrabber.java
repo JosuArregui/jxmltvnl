@@ -21,11 +21,13 @@ import java.util.List;
 
 import org.anuta.xmltv.beans.Channel;
 import org.anuta.xmltv.beans.Program;
+import org.anuta.xmltv.exceptions.TransportException;
 
 public interface EPGGrabber {
-    public List<Program> getPrograms(Channel channel, Date date, int day);
 
-    public Program getProgram(Program p);
+	public List<Program> getPrograms(Channel channel, Date date, int day) throws TransportException;
+
+    public Program getProgram(Program p) throws TransportException;
 
     public String getMappedGanre(String ganre);
 

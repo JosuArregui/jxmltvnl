@@ -16,6 +16,7 @@ import org.anuta.xmltv.beans.Program;
 import org.anuta.xmltv.beans.ProgramComparator;
 import org.anuta.xmltv.beans.Rating;
 import org.anuta.xmltv.cache.CacheManager;
+import org.anuta.xmltv.exceptions.TransportException;
 import org.anuta.xmltv.xmlbeans.Credits;
 import org.anuta.xmltv.xmlbeans.Image;
 import org.anuta.xmltv.xmlbeans.Lstring;
@@ -211,7 +212,13 @@ public class XMLTVGrabberTask implements Runnable {
         if (log.isInfoEnabled()) {
             log.info("Processing channel " + channel);
         }
-        List<Program> programs = channel.getGrabber().getPrograms(channel, new Date(), day);
+        List<Program> programs;
+		try {
+			programs = channel.getGrabber().getPrograms(channel, new Date(), day);
+		} catch (TransportException e) {
+			log.error("Eror getting programs for channel " + channel + " Day: " + day, e);
+			return;
+		}
 
         if (log.isDebugEnabled()) {
             log.debug("Sorting programs");
@@ -237,7 +244,13 @@ public class XMLTVGrabberTask implements Runnable {
             }
 
             if (prog == null) {
-                Program fullProgram = channel.getGrabber().getProgram(shortProgram);
+            	Program fullProgram;
+            	try {
+            		fullProgram = channel.getGrabber().getProgram(shortProgram);
+            	} catch (TransportException e) {
+            		log.error("Error getting full data for " + prog);
+            		fullProgram = shortProgram;
+            	}
 
                 if (log.isInfoEnabled()) {
                     log.info(fullProgram);
