@@ -1,13 +1,11 @@
 package tvgids20120311;
 
 import java.util.Date;
-import java.util.List;
 
 import junit.framework.TestCase;
 
 import org.anuta.xmltv.XMLTVGrabberTask;
 import org.anuta.xmltv.beans.Channel;
-import org.anuta.xmltv.beans.Program;
 import org.anuta.xmltv.exceptions.TransportException;
 import org.anuta.xmltv.grabber.tvgidsnl.AbstractGrabber;
 import org.anuta.xmltv.grabber.tvgidsnl.TVGidsJsonGrabber;
@@ -46,5 +44,11 @@ public class Grab extends TestCase {
 		channel1.setGrabber(grabber);
 		
 		grabber.getPrograms(channel1, new Date(), 0);
+
+		Channel channel2 = new Channel();
+		channel2.setChannelId("3");
+		channel2.setGrabber(grabber);
+		grabber.getPrograms(channel2, new Date(), 0);
+
 	}
 }
