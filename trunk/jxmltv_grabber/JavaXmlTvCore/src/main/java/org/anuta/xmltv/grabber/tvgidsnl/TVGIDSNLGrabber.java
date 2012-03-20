@@ -43,25 +43,7 @@ public class TVGIDSNLGrabber extends AbstractGrabber {
 
     private String longDateFormat = "EEEEEEEEEEEE dd MMMM yyyy HH:mm";
 
-    private String xmltvSuffix = ""; // additional to the channel id
-    // (.tvgids.nl)
-
     private long TWALF_HOURS = 1000 * 60 * 60 * 12;
-
-    public final String getMappedChannelId(final String channelId) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(channelId);
-        sb.append(getXmltvSuffix());
-        return sb.toString();
-    }
-
-    public final String getXmltvSuffix() {
-        return xmltvSuffix;
-    }
-
-    public final void setXmltvSuffix(final String xmltvSuffix) {
-        this.xmltvSuffix = xmltvSuffix;
-    }
 
     public final String getLongDateFormat() {
         return longDateFormat;
